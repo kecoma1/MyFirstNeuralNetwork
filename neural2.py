@@ -24,20 +24,17 @@ def sigmoid_derivative(x):
 
 # We want a neural network to predict a value
 
-training_inputs = np.array([  [0, 0, 1],
-                              [1, 1, 1],
-                              [1, 0, 1],
-                              [0, 1, 1],
-                              [1, 0, 0],
-                              [0, 0, 1],
-                              [0, 0, 0],
+training_inputs = np.array([  [0, 0, 0],
                               [0, 0, 1],
                               [0, 1, 0],
+                              [0, 1, 1],
                               [1, 0, 0],
-                              [1, 1, 0] ])
+                              [1, 0, 1],
+                              [1, 1, 0],
+                              [1, 1, 1] ])
 
 # .T means the transpose array
-training_outputs = np.array([ [0,1,1,0,1,0,0,0,0,1,1] ]).T
+training_outputs = np.array([ [0,1,1,1,1,1,1,1] ]).T
 
 # Each edge has a weight. We initialize that with a random value
 np.random.seed(1)
@@ -46,7 +43,7 @@ print('Synaptic weights: ')
 print(synaptic_weights)
 
 # Main loop for trainning
-for i in range(1000):
+for i in range(1000000):
 
     input_layer = training_inputs
     outputs = sigmoid(np.dot(input_layer, synaptic_weights))
